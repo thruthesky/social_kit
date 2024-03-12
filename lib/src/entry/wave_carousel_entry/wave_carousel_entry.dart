@@ -65,10 +65,8 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
   @override
   Widget build(BuildContext context) {
     if (widget.items.isEmpty) {
-      return const Scaffold(
-        body: Center(
-          child: Text('No items'),
-        ),
+      return const Center(
+        child: Text('No items'),
       );
     }
     // 스와이프 제스쳐를 받아서, ListView 나 Indicator 등을 업데이트
@@ -108,159 +106,152 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
           }
         }
       },
-      child: Scaffold(
-        body: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: Container(
-                  color: Theme.of(context).colorScheme.background,
-                ),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Container(
+                color: Theme.of(context).colorScheme.background,
               ),
-              ClipPath(
-                clipper: WaveUpDownClipper(),
-                child: Stack(
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .6,
-                      child: IgnorePointer(
-                        child: LoopPageView.builder(
-                          controller: controller,
-                          itemCount: widget.items.length,
-                          itemBuilder: (_, i) => widget.items[i].image,
-                        ),
+            ),
+            ClipPath(
+              clipper: WaveUpDownClipper(),
+              child: Stack(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .6,
+                    child: IgnorePointer(
+                      child: LoopPageView.builder(
+                        controller: controller,
+                        itemCount: widget.items.length,
+                        itemBuilder: (_, i) => widget.items[i].image,
                       ),
                     ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * .3,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.transparent,
-                              Colors.black.withOpacity(.8),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // 필맘 로고
-              Positioned(
-                top: MediaQuery.of(context).size.height * .5,
-                left: MediaQuery.of(context).size.height * .05,
-                child: ClipOval(
-                  child: SizedBox(
-                    width: 72,
-                    height: 72,
-                    child: widget.logo,
                   ),
-                ),
-              ),
-
-              // Indicator
-              Positioned(
-                top: MediaQuery.of(context).size.height * .54,
-                right: MediaQuery.of(context).size.height * .05,
-                child: StreamBuilder<int>(
-                  stream: indicator,
-                  builder: (context, snapshot) {
-                    // print('인디케이터: ${snapshot.data}');
-                    return AnimatedSmoothIndicator(
-                      activeIndex: snapshot.data ?? 0,
-                      count: 4,
-                      effect: const ExpandingDotsEffect(
-                        dotWidth: 8.0,
-                        dotHeight: 8.0,
-                        dotColor: Colors.grey,
-                        activeDotColor: Colors.white,
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * .3,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Colors.black.withOpacity(.8),
+                          ],
+                        ),
                       ),
-                    );
-                  },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // 필맘 로고
+            Positioned(
+              top: MediaQuery.of(context).size.height * .5,
+              left: MediaQuery.of(context).size.height * .05,
+              child: ClipOval(
+                child: SizedBox(
+                  width: 72,
+                  height: 72,
+                  child: widget.logo,
                 ),
               ),
+            ),
 
-              /// 제목
-              Positioned(
-                top: MediaQuery.of(context).size.height * .70,
-                left: 0,
-                right: 0,
-                child: Center(
+            // Indicator
+            Positioned(
+              top: MediaQuery.of(context).size.height * .54,
+              right: MediaQuery.of(context).size.height * .05,
+              child: StreamBuilder<int>(
+                stream: indicator,
+                builder: (context, snapshot) {
+                  // print('인디케이터: ${snapshot.data}');
+                  return AnimatedSmoothIndicator(
+                    activeIndex: snapshot.data ?? 0,
+                    count: 4,
+                    effect: const ExpandingDotsEffect(
+                      dotWidth: 8.0,
+                      dotHeight: 8.0,
+                      dotColor: Colors.grey,
+                      activeDotColor: Colors.white,
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            /// 제목
+            Positioned(
+              top: MediaQuery.of(context).size.height * .70,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: StreamBuilder<Object>(
+                    stream: indicator,
+                    builder: (context, snapshot) {
+                      return Text(
+                        widget
+                            .items[int.parse(snapshot.data?.toString() ?? '0')]
+                            .title,
+                        // style: GoogleFonts.nanumPenScript(
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                        // ),
+                      );
+                    }),
+              ),
+            ),
+
+            /// 부 제목
+            Positioned(
+              top: MediaQuery.of(context).size.height * .74,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * .7,
                   child: StreamBuilder<Object>(
-                      stream: indicator,
-                      builder: (context, snapshot) {
-                        return Text(
-                          widget
-                              .items[
-                                  int.parse(snapshot.data?.toString() ?? '0')]
-                              .title,
-                          // style: GoogleFonts.nanumPenScript(
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge
-                              ?.copyWith(
-                                fontWeight: FontWeight.w300,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                          // ),
-                        );
-                      }),
+                    stream: indicator,
+                    builder: (context, snapshot) {
+                      return Text(
+                        widget
+                            .items[int.parse(snapshot.data?.toString() ?? '0')]
+                            .subtitle,
+                        style: Theme.of(context).textTheme.titleSmall,
+                        textAlign: TextAlign.center,
+                      );
+                    },
+                  ),
                 ),
               ),
-
-              /// 부 제목
-              Positioned(
-                top: MediaQuery.of(context).size.height * .74,
-                left: 0,
-                right: 0,
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: SafeArea(
                 child: Center(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width * .7,
-                    child: StreamBuilder<Object>(
-                      stream: indicator,
-                      builder: (context, snapshot) {
-                        return Text(
-                          widget
-                              .items[
-                                  int.parse(snapshot.data?.toString() ?? '0')]
-                              .subtitle,
-                          style: Theme.of(context).textTheme.titleSmall,
-                          textAlign: TextAlign.center,
-                        );
-                      },
-                    ),
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: widget.onStart,
+                        child: const Text('getStart'),
+                      ),
+                      const SizedBox(height: 16),
+                    ],
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: SafeArea(
-                  child: Center(
-                    child: Column(
-                      children: [
-                        ElevatedButton(
-                          onPressed: widget.onStart,
-                          child: const Text('getStart'),
-                        ),
-                        const SizedBox(height: 16),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
