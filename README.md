@@ -32,7 +32,7 @@ const like = 'sample';
 
 ### Sleep Walker
 
-- You can move around a widget in a stack.
+- You can move around a widget in a stack. It is useful to give some decoration under the stack.
 
 - The speed of the each move is set by the starting point of the `duration`. Meaning, the speed of the current position to next position is depends on the `duration` of the current position. So, the last `duration` is ignored.
 
