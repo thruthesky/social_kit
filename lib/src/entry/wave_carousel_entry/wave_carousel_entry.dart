@@ -16,11 +16,13 @@ class WaveCarouselEntry extends StatefulWidget {
   const WaveCarouselEntry({
     super.key,
     required this.logo,
+    this.backgroundWidget,
     required this.items,
     required this.onStart,
     this.autoSwipeInterval = 3000,
   });
   final Widget logo;
+  final Widget? backgroundWidget;
   final List<WaveCarouselItem> items;
   final VoidCallback onStart;
   final int autoSwipeInterval;
@@ -116,6 +118,7 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                 color: Theme.of(context).colorScheme.background,
               ),
             ),
+            if (widget.backgroundWidget != null) widget.backgroundWidget!,
             ClipPath(
               clipper: WaveUpDownClipper(),
               child: Stack(
