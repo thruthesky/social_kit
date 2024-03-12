@@ -1,7 +1,2 @@
-library social_kit;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/entry/wave_carousel_entry/wave_carousel_entry.dart';
+export 'src/entry/wave_carousel_entry/wave_up_down_clipper.dart';
