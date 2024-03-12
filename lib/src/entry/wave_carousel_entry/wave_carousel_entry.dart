@@ -13,7 +13,6 @@ typedef WaveCarouselItem = ({
 });
 
 class WaveCarouselEntry extends StatefulWidget {
-  static const String routeName = '/WaveCarouselEntry';
   const WaveCarouselEntry({
     super.key,
     required this.logo,
