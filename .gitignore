@@ -1,4 +1,12 @@
-example
+example/.gitignore
+example/.metadata
+example/android
+example/ios
+example/linux
+example/macos
+example/web
+example/windows
+
 
 
 # Miscellaneous
