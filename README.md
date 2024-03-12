@@ -114,6 +114,7 @@ class _SleepWalkerScreenState extends State<SleepWalkerScreen> {
 ```dart
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:roha/screens/entry/entry.background.dart';
 import 'package:social_kit/social_kit.dart';
 
 class EntryScreen extends StatelessWidget {
@@ -169,27 +170,55 @@ class EntryScreen extends StatelessWidget {
             ),
           ),
         ],
-        backgroundWidget: SleepWalker(
-          alignments: const [
+        backgroundWidget: const SleepWalker(
+          alignments: [
             (
               alignment: Alignment.centerLeft,
               duration: Duration(milliseconds: 2000),
             ),
             (
-              alignment: Alignment.centerRight,
-              duration: Duration(milliseconds: 700),
+              alignment: Alignment(-.1, .35),
+              duration: Duration(milliseconds: 2000),
             ),
             (
-              alignment: Alignment.bottomRight,
-              duration: Duration(milliseconds: 400),
+              alignment: Alignment(0, .39),
+              duration: Duration(milliseconds: 2000),
             ),
             (
-              alignment: Alignment.bottomLeft,
-              duration: Duration(milliseconds: 300),
+              alignment: Alignment(0.9, .2),
+              duration: Duration(milliseconds: 1500),
+            ),
+            (
+              alignment: Alignment(1, .3),
+              duration: Duration(milliseconds: 1500),
+            ),
+            (
+              alignment: Alignment(.8, .6),
+              duration: Duration(milliseconds: 1400),
+            ),
+            (
+              alignment: Alignment(.0, .85),
+              duration: Duration(milliseconds: 1400),
+            ),
+            (
+              alignment: Alignment(-.8, .5),
+              duration: Duration(milliseconds: 1300),
             ),
             (
               alignment: Alignment(.7, .2),
-              duration: Duration(milliseconds: 200),
+              duration: Duration(milliseconds: 1200),
+            ),
+            (
+              alignment: Alignment(.8, .1),
+              duration: Duration(milliseconds: 1200),
+            ),
+            (
+              alignment: Alignment(.7, .15),
+              duration: Duration(milliseconds: 1200),
+            ),
+            (
+              alignment: Alignment(-.1, .25),
+              duration: Duration(milliseconds: 1200),
             ),
             (
               alignment: Alignment.centerLeft,
@@ -197,13 +226,135 @@ class EntryScreen extends StatelessWidget {
             ),
           ],
           repeat: true,
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.blue,
-          ),
+          child: EntryBackground(),
         ),
       ),
+    );
+  }
+}
+```
+
+
+```dart
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+
+class EntryBackground extends StatelessWidget {
+  const EntryBackground({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 196,
+      height: 196,
+      child: Stack(
+        children: [
+          // 중앙, 빨간색
+          Positioned(
+            top: 80,
+            left: 50,
+            child: Transform(
+              alignment: Alignment.topRight,
+              transform: Matrix4.rotationZ(pi / 12), // rotateZ(-pi / 12.0),
+              child: Container(
+                width: 99.88,
+                height: 99.88,
+                decoration: ShapeDecoration(
+                  color: Colors.red.withAlpha(1),
+                  shape: const StarBorder.polygon(
+                    sides: 3,
+                    pointRounding: 0.5,
+                  ),
+                  shadows: [
+                    BoxShadow(
+                      color: Colors.red.shade900.withAlpha(71),
+                      blurRadius: 384.4,
+                      spreadRadius: 0.1,
+                    ),
+                  ],
+                ),
+              ).animate().fade().scale().rotate().then().rotate(
+                    delay: .4.seconds,
+                    duration: 2300.seconds,
+                    begin: 100,
+                    end: 0,
+                  ),
+            ),
+          ),
+          // 상단, 오렌지색
+          Positioned(
+            top: 0,
+            left: 30,
+            child: Transform(
+              alignment: Alignment.topRight,
+              transform: Matrix4.rotationZ(-pi / 7), // rotateZ(-pi / 12.0),
+              child: Container(
+                width: 99.88,
+                height: 99.88,
+                decoration: ShapeDecoration(
+                  color: Colors.orange.withAlpha(1),
+                  shape: const StarBorder.polygon(
+                    sides: 3,
+                    pointRounding: 0.5,
+                  ),
+                  shadows: [
+                    BoxShadow(
+                      color: Colors.orange.shade900.withAlpha(71),
+                      blurRadius: 384.4,
+                      spreadRadius: 0.1,
+                    ),
+                  ],
+                ),
+              ).animate().fade().scale().rotate().then().rotate(
+                    delay: .4.seconds,
+                    duration: 6000.seconds,
+                    begin: 0,
+                    end: 100,
+                  ),
+            ),
+          ),
+
+          /// 파랑, 하단
+          Positioned(
+            top: 90,
+            left: 50,
+            child: Transform(
+              alignment: Alignment.topRight,
+              transform: Matrix4.rotationZ(-pi / 5), // rotateZ(-pi / 12.0),
+              child: Container(
+                width: 99.88,
+                height: 99.88,
+                decoration: ShapeDecoration(
+                  color: Colors.blue.withAlpha(1),
+                  shape: const StarBorder.polygon(
+                    sides: 3,
+                    pointRounding: .9,
+                  ),
+                  shadows: [
+                    BoxShadow(
+                      color: Colors.blue.shade900.withAlpha(71),
+                      blurRadius: 384.4,
+                      spreadRadius: 12,
+                    ),
+                  ],
+                ),
+              ).animate().fade().scale().rotate().then().rotate(
+                    delay: .4.seconds,
+                    duration: 1900.seconds,
+                    begin: 0,
+                    end: 100,
+                  ),
+            ),
+          ),
+        ],
+      ).animate().rotate().scale().then().rotate(
+            delay: .4.seconds,
+            duration: 1900.seconds,
+            begin: 100,
+            end: 0,
+          ),
     );
   }
 }
