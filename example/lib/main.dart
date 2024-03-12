@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_kit_example/router.dart';
 
 void main() {
   runApp(const MyApp());
