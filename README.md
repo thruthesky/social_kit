@@ -112,9 +112,10 @@ class _SleepWalkerScreenState extends State<SleepWalkerScreen> {
 - You can give a decoration of SleepWalker to the background of WaveCarouselEntry.
 
 ```dart
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:roha/app.service.dart';
 import 'package:roha/screens/entry/entry.background.dart';
+import 'package:roha/screens/entry/phone_sign_in.screen.dart';
 import 'package:social_kit/social_kit.dart';
 
 class EntryScreen extends StatelessWidget {
@@ -125,20 +126,40 @@ class EntryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: WaveCarouselEntry(
-        onStart: () {
-          Navigator.pop(context);
+        autoSwipeInterval: 3,
+        onStart: () async {
+          final re =
+              await AppService.instance.displayTermsAndConditions(context);
+          if (re == true && context.mounted) {
+            showGeneralDialog(
+              context: context,
+              pageBuilder: ($, $$, $$$) => const PhoneSignInScreen(),
+            );
+          }
         },
-        logo: CachedNetworkImage(
-          imageUrl: 'https://picsum.photos/250/',
-          fit: BoxFit.cover,
+        logo: Container(
+          width: 72,
+          height: 72,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Color(0xFFffe1f1),
+          ),
+          child: FractionallySizedBox(
+            widthFactor: 1.4,
+            heightFactor: 1.4,
+            child: Image.asset(
+              'assets/images/app_icon.webp',
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         items: [
           (
             title: "캐주얼 대화",
             subtitle:
                 "우리의 미팅 앱을 사용하여 이성과의 캐주얼하고 즐거운 대화에 참여하세요. 손쉽게 연결하고 채팅하세요.",
-            image: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/250?image=9',
+            image: Image.asset(
+              'assets/images/entry_screen/0.webp',
               fit: BoxFit.cover,
             ),
           ),
@@ -146,8 +167,8 @@ class EntryScreen extends StatelessWidget {
             title: "소셜 서클 확장",
             subtitle:
                 "새로운 사람들을 만나 소셜 서클을 손쉽게 확장하세요. 우리의 앱은 진정한 연결과 친근한 상호작용을 위해 디자인되었습니다.",
-            image: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/250?image=10',
+            image: Image.asset(
+              'assets/images/entry_screen/1.webp',
               fit: BoxFit.cover,
             ),
           ),
@@ -155,8 +176,8 @@ class EntryScreen extends StatelessWidget {
             title: "새로운 연결 발견",
             subtitle:
                 "흥미로운 개인들과 연결을 찾아보세요. 우리의 미팅 앱은 시야를 넓히고 다양한 사람들을 만나기 쉽게 만들어줍니다.",
-            image: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/250?image=11',
+            image: Image.asset(
+              'assets/images/entry_screen/2.webp',
               fit: BoxFit.cover,
             ),
           ),
@@ -164,12 +185,15 @@ class EntryScreen extends StatelessWidget {
             title: "의미 있는 대화 즐기기",
             subtitle:
                 "정직한 대화를 통해 의미 있는 연결을 만들어보세요. 우리의 앱은 이성을 만날 수 있는 친근하고 환영받는 환경을 조성합니다.",
-            image: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/250?image=12',
+            image: Image.asset(
+              'assets/images/entry_screen/3.webp',
               fit: BoxFit.cover,
             ),
           ),
         ],
+        bottomGradient: const SizedBox.shrink(),
+        indicatorColor: Colors.grey.shade600,
+        indicatorActiveColor: Colors.black,
         backgroundWidget: const SleepWalker(
           alignments: [
             (

@@ -12,6 +12,8 @@ typedef WaveCarouselItem = ({
   Widget image,
 });
 
+/// Wave Carousel Entry
+///
 class WaveCarouselEntry extends StatefulWidget {
   const WaveCarouselEntry({
     super.key,
@@ -20,12 +22,18 @@ class WaveCarouselEntry extends StatefulWidget {
     required this.items,
     required this.onStart,
     this.autoSwipeInterval = 3000,
+    this.bottomGradient,
+    this.indicatorColor = Colors.grey,
+    this.indicatorActiveColor = Colors.white,
   });
   final Widget logo;
   final Widget? backgroundWidget;
   final List<WaveCarouselItem> items;
   final VoidCallback onStart;
   final int autoSwipeInterval;
+  final Widget? bottomGradient;
+  final Color? indicatorColor;
+  final Color? indicatorActiveColor;
 
   @override
   State<WaveCarouselEntry> createState() => _WaveCarouselEntryState();
@@ -133,23 +141,27 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                       ),
                     ),
                   ),
+
+                  /// Graident on the picture
+                  ///
                   Positioned(
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * .3,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.transparent,
-                            Colors.black.withOpacity(.8),
-                          ],
+                    child: widget.bottomGradient ??
+                        Container(
+                          height: MediaQuery.of(context).size.height * .3,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.transparent,
+                                Colors.black.withOpacity(.99),
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -158,13 +170,7 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
             Positioned(
               top: MediaQuery.of(context).size.height * .5,
               left: MediaQuery.of(context).size.height * .05,
-              child: ClipOval(
-                child: SizedBox(
-                  width: 72,
-                  height: 72,
-                  child: widget.logo,
-                ),
-              ),
+              child: widget.logo,
             ),
 
             // Indicator
@@ -178,11 +184,12 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                   return AnimatedSmoothIndicator(
                     activeIndex: snapshot.data ?? 0,
                     count: 4,
-                    effect: const ExpandingDotsEffect(
+                    effect: ExpandingDotsEffect(
                       dotWidth: 8.0,
                       dotHeight: 8.0,
-                      dotColor: Colors.grey,
-                      activeDotColor: Colors.white,
+                      dotColor: widget.indicatorColor ?? Colors.white,
+                      activeDotColor:
+                          widget.indicatorActiveColor ?? Colors.white,
                     ),
                   );
                 },
