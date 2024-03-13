@@ -7,8 +7,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:social_kit/social_kit.dart';
 
 typedef WaveCarouselItem = ({
-  String title,
-  String subtitle,
+  Widget title,
+  Widget subtitle,
   Widget image,
 });
 
@@ -27,6 +27,7 @@ class WaveCarouselEntry extends StatefulWidget {
     this.indicatorActiveColor = Colors.white,
     this.bottomStroke = 0,
     this.bottomStrokeColor = Colors.black,
+    this.titleSpacing = 8.0,
   });
   final Widget logo;
   final Widget? backgroundWidget;
@@ -38,6 +39,7 @@ class WaveCarouselEntry extends StatefulWidget {
   final Color? indicatorActiveColor;
   final double bottomStroke;
   final Color bottomStrokeColor;
+  final double titleSpacing;
 
   @override
   State<WaveCarouselEntry> createState() => _WaveCarouselEntryState();
@@ -222,19 +224,15 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                 child: StreamBuilder<Object>(
                     stream: indicator,
                     builder: (context, snapshot) {
-                      return Text(
-                        widget
-                            .items[int.parse(snapshot.data?.toString() ?? '0')]
-                            .title,
-                        // style: GoogleFonts.nanumPenScript(
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                        // ),
-                      );
+                      return widget
+                          .items[int.parse(snapshot.data?.toString() ?? '0')]
+                          .title;
                     }),
               ),
+            ),
+
+            SizedBox(
+              height: widget.titleSpacing,
             ),
 
             /// 부 제목
@@ -248,13 +246,9 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                   child: StreamBuilder<Object>(
                     stream: indicator,
                     builder: (context, snapshot) {
-                      return Text(
-                        widget
-                            .items[int.parse(snapshot.data?.toString() ?? '0')]
-                            .subtitle,
-                        style: Theme.of(context).textTheme.titleSmall,
-                        textAlign: TextAlign.center,
-                      );
+                      return widget
+                          .items[int.parse(snapshot.data?.toString() ?? '0')]
+                          .subtitle;
                     },
                   ),
                 ),
