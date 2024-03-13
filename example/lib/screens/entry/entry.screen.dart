@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:social_kit/social_kit.dart';
 
 class EntryScreen extends StatefulWidget {
@@ -19,10 +18,12 @@ class _EntryScreenState extends State<EntryScreen> {
         bottomStroke: 4,
         bottomStrokeColor: Colors.blue,
         titleSpacing: 0,
-        onStart: () {
-          print('tapped');
-          Navigator.pop(context);
-        },
+        start: ElevatedButton(
+            onPressed: () {
+              print('tapped');
+              Navigator.pop(context);
+            },
+            child: const Text('Start')),
         logo: Container(
           width: 72,
           height: 72,

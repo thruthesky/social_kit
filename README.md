@@ -36,6 +36,9 @@ const like = 'sample';
 - `bottomStrokeColor` is the color of `bottomStroke`. Ex: Colors.blue
 
 
+- `start` is the button at the very bottom to display "CONTINUE" OR "GET STARTED".
+
+
 ### Sleep Walker
 
 - You can move around a widget in a stack. It is useful to give some decoration under the stack.
