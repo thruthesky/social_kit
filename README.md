@@ -30,6 +30,12 @@ const like = 'sample';
 - This displays an entry style widget. It does not have a scaffold. Meaning you can add it in a screen if you want.
 - It is best fit on mobile size.
 
+
+
+- `bottomStroke` is the width of the bottom line at the bottom of photos. Ex: 5
+- `bottomStrokeColor` is the color of `bottomStroke`. Ex: Colors.blue
+
+
 ### Sleep Walker
 
 - You can move around a widget in a stack. It is useful to give some decoration under the stack.

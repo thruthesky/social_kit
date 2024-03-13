@@ -16,13 +16,25 @@ class _EntryScreenState extends State<EntryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: WaveCarouselEntry(
+        bottomStroke: 4,
+        bottomStrokeColor: Colors.blue,
         onStart: () {
           print('tapped');
           Navigator.pop(context);
         },
-        logo: CachedNetworkImage(
-          imageUrl: 'https://picsum.photos/250/',
-          fit: BoxFit.cover,
+        logo: Container(
+          width: 72,
+          height: 72,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Color(0xFFffe1f1),
+          ),
+          child: ClipOval(
+            child: CachedNetworkImage(
+              imageUrl: 'https://picsum.photos/250/',
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         items: [
           (

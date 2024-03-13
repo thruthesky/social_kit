@@ -25,6 +25,8 @@ class WaveCarouselEntry extends StatefulWidget {
     this.bottomGradient,
     this.indicatorColor = Colors.grey,
     this.indicatorActiveColor = Colors.white,
+    this.bottomStroke = 0,
+    this.bottomStrokeColor = Colors.black,
   });
   final Widget logo;
   final Widget? backgroundWidget;
@@ -34,6 +36,8 @@ class WaveCarouselEntry extends StatefulWidget {
   final Widget? bottomGradient;
   final Color? indicatorColor;
   final Color? indicatorActiveColor;
+  final double bottomStroke;
+  final Color bottomStrokeColor;
 
   @override
   State<WaveCarouselEntry> createState() => _WaveCarouselEntryState();
@@ -127,6 +131,18 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
               ),
             ),
             if (widget.backgroundWidget != null) widget.backgroundWidget!,
+
+            if (widget.bottomStroke > 0)
+              CustomPaint(
+                painter: BorderPainter(
+                  bottomStroke: widget.bottomStroke,
+                  bottomStrokeColor: widget.bottomStrokeColor,
+                ),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * .6,
+                ),
+              ),
+
             ClipPath(
               clipper: WaveUpDownClipper(),
               child: Stack(
@@ -166,6 +182,7 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                 ],
               ),
             ),
+
             // 필맘 로고
             Positioned(
               top: MediaQuery.of(context).size.height * .5,
@@ -266,4 +283,38 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
       ),
     );
   }
+}
+
+class BorderPainter extends CustomPainter {
+  BorderPainter({
+    required this.bottomStroke,
+    required this.bottomStrokeColor,
+  });
+  final Color bottomStrokeColor;
+  final double bottomStroke;
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = bottomStroke
+      ..color = bottomStrokeColor;
+
+    var controlPoint1 = Offset(150, size.height - 200);
+    var controlPoint2 = Offset(size.width - 250, size.height);
+    var endPoint = Offset(size.width, size.height - 0);
+
+    Path path = Path()
+      // ..moveTo(size.width / 2, 0)
+      ..lineTo(0, size.height - 100)
+      ..cubicTo(controlPoint1.dx, controlPoint1.dy, controlPoint2.dx,
+          controlPoint2.dy, endPoint.dx, endPoint.dy)
+      ..lineTo(size.width, 0)
+      ..close();
+
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
