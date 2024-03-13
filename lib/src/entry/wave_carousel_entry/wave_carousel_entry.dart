@@ -7,8 +7,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:social_kit/social_kit.dart';
 
 typedef WaveCarouselItem = ({
-  String title,
-  String subtitle,
+  Widget title,
+  Widget subtitle,
   Widget image,
 });
 
@@ -20,20 +20,28 @@ class WaveCarouselEntry extends StatefulWidget {
     required this.logo,
     this.backgroundWidget,
     required this.items,
-    required this.onStart,
+    // required this.onStart,
+    required this.start,
     this.autoSwipeInterval = 3000,
     this.bottomGradient,
     this.indicatorColor = Colors.grey,
     this.indicatorActiveColor = Colors.white,
+    this.bottomStroke = 0,
+    this.bottomStrokeColor = Colors.black,
+    this.titleSpacing = 8.0,
   });
   final Widget logo;
   final Widget? backgroundWidget;
   final List<WaveCarouselItem> items;
-  final VoidCallback onStart;
+  // final VoidCallback onStart;
+  final Widget start;
   final int autoSwipeInterval;
   final Widget? bottomGradient;
   final Color? indicatorColor;
   final Color? indicatorActiveColor;
+  final double bottomStroke;
+  final Color bottomStrokeColor;
+  final double titleSpacing;
 
   @override
   State<WaveCarouselEntry> createState() => _WaveCarouselEntryState();
@@ -127,6 +135,18 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
               ),
             ),
             if (widget.backgroundWidget != null) widget.backgroundWidget!,
+
+            if (widget.bottomStroke > 0)
+              CustomPaint(
+                painter: BorderPainter(
+                  bottomStroke: widget.bottomStroke,
+                  bottomStrokeColor: widget.bottomStrokeColor,
+                ),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * .6,
+                ),
+              ),
+
             ClipPath(
               clipper: WaveUpDownClipper(),
               child: Stack(
@@ -166,6 +186,7 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                 ],
               ),
             ),
+
             // 필맘 로고
             Positioned(
               top: MediaQuery.of(context).size.height * .5,
@@ -205,39 +226,34 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                 child: StreamBuilder<Object>(
                     stream: indicator,
                     builder: (context, snapshot) {
-                      return Text(
-                        widget
-                            .items[int.parse(snapshot.data?.toString() ?? '0')]
-                            .title,
-                        // style: GoogleFonts.nanumPenScript(
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                        // ),
-                      );
+                      return widget
+                          .items[int.parse(snapshot.data?.toString() ?? '0')]
+                          .title;
                     }),
               ),
             ),
 
+            SizedBox(
+              height: widget.titleSpacing,
+            ),
+
             /// 부 제목
             Positioned(
-              top: MediaQuery.of(context).size.height * .74,
+              top: MediaQuery.of(context).size.height * .73,
               left: 0,
               right: 0,
               child: Center(
-                child: SizedBox(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    top: widget.titleSpacing,
+                  ),
                   width: MediaQuery.of(context).size.width * .7,
                   child: StreamBuilder<Object>(
                     stream: indicator,
                     builder: (context, snapshot) {
-                      return Text(
-                        widget
-                            .items[int.parse(snapshot.data?.toString() ?? '0')]
-                            .subtitle,
-                        style: Theme.of(context).textTheme.titleSmall,
-                        textAlign: TextAlign.center,
-                      );
+                      return widget
+                          .items[int.parse(snapshot.data?.toString() ?? '0')]
+                          .subtitle;
                     },
                   ),
                 ),
@@ -251,10 +267,7 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                 child: Center(
                   child: Column(
                     children: [
-                      ElevatedButton(
-                        onPressed: widget.onStart,
-                        child: const Text('getStart'),
-                      ),
+                      widget.start,
                       const SizedBox(height: 16),
                     ],
                   ),
@@ -266,4 +279,38 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
       ),
     );
   }
+}
+
+class BorderPainter extends CustomPainter {
+  BorderPainter({
+    required this.bottomStroke,
+    required this.bottomStrokeColor,
+  });
+  final Color bottomStrokeColor;
+  final double bottomStroke;
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = bottomStroke
+      ..color = bottomStrokeColor;
+
+    var controlPoint1 = Offset(150, size.height - 200);
+    var controlPoint2 = Offset(size.width - 250, size.height);
+    var endPoint = Offset(size.width, size.height - 0);
+
+    Path path = Path()
+      // ..moveTo(size.width / 2, 0)
+      ..lineTo(0, size.height - 100)
+      ..cubicTo(controlPoint1.dx, controlPoint1.dy, controlPoint2.dx,
+          controlPoint2.dy, endPoint.dx, endPoint.dy)
+      ..lineTo(size.width, 0)
+      ..close();
+
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
