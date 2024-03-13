@@ -237,11 +237,14 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
 
             /// 부 제목
             Positioned(
-              top: MediaQuery.of(context).size.height * .74,
+              top: MediaQuery.of(context).size.height * .73,
               left: 0,
               right: 0,
               child: Center(
-                child: SizedBox(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    top: widget.titleSpacing,
+                  ),
                   width: MediaQuery.of(context).size.width * .7,
                   child: StreamBuilder<Object>(
                     stream: indicator,

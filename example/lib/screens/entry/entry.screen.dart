@@ -18,6 +18,7 @@ class _EntryScreenState extends State<EntryScreen> {
       body: WaveCarouselEntry(
         bottomStroke: 4,
         bottomStrokeColor: Colors.blue,
+        titleSpacing: 0,
         onStart: () {
           print('tapped');
           Navigator.pop(context);
