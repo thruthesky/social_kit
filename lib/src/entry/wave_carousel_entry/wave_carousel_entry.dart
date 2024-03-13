@@ -20,7 +20,8 @@ class WaveCarouselEntry extends StatefulWidget {
     required this.logo,
     this.backgroundWidget,
     required this.items,
-    required this.onStart,
+    // required this.onStart,
+    required this.start,
     this.autoSwipeInterval = 3000,
     this.bottomGradient,
     this.indicatorColor = Colors.grey,
@@ -32,7 +33,8 @@ class WaveCarouselEntry extends StatefulWidget {
   final Widget logo;
   final Widget? backgroundWidget;
   final List<WaveCarouselItem> items;
-  final VoidCallback onStart;
+  // final VoidCallback onStart;
+  final Widget start;
   final int autoSwipeInterval;
   final Widget? bottomGradient;
   final Color? indicatorColor;
@@ -261,10 +263,7 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
                 child: Center(
                   child: Column(
                     children: [
-                      ElevatedButton(
-                        onPressed: widget.onStart,
-                        child: const Text('getStart'),
-                      ),
+                      widget.start,
                       const SizedBox(height: 16),
                     ],
                   ),
