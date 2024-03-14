@@ -20,7 +20,7 @@ class _EntryScreenState extends State<EntryScreen> {
         titleSpacing: 0,
         start: ElevatedButton(
             onPressed: () {
-              print('tapped');
+              // print('tapped');
               Navigator.pop(context);
             },
             child: const Text('Start')),
