@@ -65,6 +65,7 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
           curve: Curves.ease,
         )
             .then((value) {
+          if (!mounted) return;
           // then 에서 해야 올바른 페이지 번호가 나옴
           indicator.add(controller.page.toInt());
         });
