@@ -104,31 +104,33 @@ class _SleepWalkerScreenState extends State<SleepWalkerScreen> {
 - You can give a decoration of SleepWalker to the background of WaveCarouselEntry.
 
 ```dart
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:roha/app.service.dart';
-import 'package:roha/screens/entry/entry.background.dart';
-import 'package:roha/screens/entry/phone_sign_in.screen.dart';
 import 'package:social_kit/social_kit.dart';
 
-class EntryScreen extends StatelessWidget {
+class EntryScreen extends StatefulWidget {
   static const String routeName = '/Entry';
   const EntryScreen({super.key});
 
   @override
+  State<EntryScreen> createState() => _EntryScreenState();
+}
+
+class _EntryScreenState extends State<EntryScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: WaveCarouselEntry(
-        autoSwipeInterval: 3,
-        onStart: () async {
-          final re =
-              await AppService.instance.displayTermsAndConditions(context);
-          if (re == true && context.mounted) {
-            showGeneralDialog(
-              context: context,
-              pageBuilder: ($, $$, $$$) => const PhoneSignInScreen(),
-            );
-          }
-        },
+        autoSwipeInterval: 3000,
+        bottomStroke: 8,
+        bottomStrokeColor: Colors.grey,
+        titleSpacing: 16,
+        start: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('CONTINUE'),
+        ),
         logo: Container(
           width: 72,
           height: 72,
@@ -136,114 +138,87 @@ class EntryScreen extends StatelessWidget {
             shape: BoxShape.circle,
             color: Color(0xFFffe1f1),
           ),
-          child: FractionallySizedBox(
-            widthFactor: 1.4,
-            heightFactor: 1.4,
-            child: Image.asset(
-              'assets/images/app_icon.webp',
+          child: ClipOval(
+            child: CachedNetworkImage(
+              imageUrl: 'https://picsum.photos/250/?image=400',
               fit: BoxFit.cover,
             ),
           ),
         ),
         items: [
           (
-            title: "캐주얼 대화",
-            subtitle:
-                "우리의 미팅 앱을 사용하여 이성과의 캐주얼하고 즐거운 대화에 참여하세요. 손쉽게 연결하고 채팅하세요.",
-            image: Image.asset(
-              'assets/images/entry_screen/0.webp',
+            title: Text(
+              "Casual Talk",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              "Please join casual and enjoyable conversations with potential matches using our meeting app. Easily connect and chat.",
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+            image: CachedNetworkImage(
+              imageUrl: 'https://picsum.photos/250?image=90',
               fit: BoxFit.cover,
             ),
           ),
           (
-            title: "소셜 서클 확장",
-            subtitle:
-                "새로운 사람들을 만나 소셜 서클을 손쉽게 확장하세요. 우리의 앱은 진정한 연결과 친근한 상호작용을 위해 디자인되었습니다.",
-            image: Image.asset(
-              'assets/images/entry_screen/1.webp',
+            title: Text(
+              "Extends Social Circle",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              "Discover interesting individuals to connect with. Our meeting app makes it easy to broaden your horizons and meet diverse people.",
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+            image: CachedNetworkImage(
+              imageUrl: 'https://picsum.photos/250?image=100',
               fit: BoxFit.cover,
             ),
           ),
           (
-            title: "새로운 연결 발견",
-            subtitle:
-                "흥미로운 개인들과 연결을 찾아보세요. 우리의 미팅 앱은 시야를 넓히고 다양한 사람들을 만나기 쉽게 만들어줍니다.",
-            image: Image.asset(
-              'assets/images/entry_screen/2.webp',
+            title: Text(
+              "Discover New Connections",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              "Our meeting app is designed to help you find new connections and expand your social circle. Join us and meet new people.",
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+            image: CachedNetworkImage(
+              imageUrl: 'https://picsum.photos/250?image=110',
               fit: BoxFit.cover,
             ),
           ),
           (
-            title: "의미 있는 대화 즐기기",
-            subtitle:
-                "정직한 대화를 통해 의미 있는 연결을 만들어보세요. 우리의 앱은 이성을 만날 수 있는 친근하고 환영받는 환경을 조성합니다.",
-            image: Image.asset(
-              'assets/images/entry_screen/3.webp',
+            title: Text(
+              "Meaningful Connections",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              "Create meaningful connections through honest conversations. Our app fosters a friendly and welcoming environment for meeting potential partners.",
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+            image: CachedNetworkImage(
+              imageUrl: 'https://picsum.photos/250?image=120',
               fit: BoxFit.cover,
             ),
           ),
         ],
-        bottomGradient: const SizedBox.shrink(),
-        indicatorColor: Colors.grey.shade600,
-        indicatorActiveColor: Colors.black,
-        backgroundWidget: const SleepWalker(
-          alignments: [
-            (
-              alignment: Alignment.centerLeft,
-              duration: Duration(milliseconds: 2000),
-            ),
-            (
-              alignment: Alignment(-.1, .35),
-              duration: Duration(milliseconds: 2000),
-            ),
-            (
-              alignment: Alignment(0, .39),
-              duration: Duration(milliseconds: 2000),
-            ),
-            (
-              alignment: Alignment(0.9, .2),
-              duration: Duration(milliseconds: 1500),
-            ),
-            (
-              alignment: Alignment(1, .3),
-              duration: Duration(milliseconds: 1500),
-            ),
-            (
-              alignment: Alignment(.8, .6),
-              duration: Duration(milliseconds: 1400),
-            ),
-            (
-              alignment: Alignment(.0, .85),
-              duration: Duration(milliseconds: 1400),
-            ),
-            (
-              alignment: Alignment(-.8, .5),
-              duration: Duration(milliseconds: 1300),
-            ),
-            (
-              alignment: Alignment(.7, .2),
-              duration: Duration(milliseconds: 1200),
-            ),
-            (
-              alignment: Alignment(.8, .1),
-              duration: Duration(milliseconds: 1200),
-            ),
-            (
-              alignment: Alignment(.7, .15),
-              duration: Duration(milliseconds: 1200),
-            ),
-            (
-              alignment: Alignment(-.1, .25),
-              duration: Duration(milliseconds: 1200),
-            ),
-            (
-              alignment: Alignment.centerLeft,
-              duration: Duration(seconds: 1),
-            ),
-          ],
-          repeat: true,
-          child: EntryBackground(),
-        ),
       ),
     );
   }

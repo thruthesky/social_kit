@@ -2,15 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:social_kit/social_kit.dart';
 
-class EntryScreen extends StatefulWidget {
-  static const String routeName = '/Entry';
-  const EntryScreen({super.key});
+class WaveCarouselEntryScreen extends StatefulWidget {
+  static const String routeName = '/WaveCarouselEntry';
+  const WaveCarouselEntryScreen({super.key});
 
   @override
-  State<EntryScreen> createState() => _EntryScreenState();
+  State<WaveCarouselEntryScreen> createState() =>
+      _WaveCarouselEntryScreenState();
 }
 
-class _EntryScreenState extends State<EntryScreen> {
+class _WaveCarouselEntryScreenState extends State<WaveCarouselEntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

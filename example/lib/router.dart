@@ -1,4 +1,5 @@
-import 'package:social_kit_example/screens/entry/entry.screen.dart';
+import 'package:social_kit_example/screens/entry/round_carousel_entry.screen.dart';
+import 'package:social_kit_example/screens/entry/wave_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/home/home.screen.dart';
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
 import 'package:flutter/material.dart';
@@ -40,10 +41,17 @@ final router = GoRouter(
       builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(
-      path: EntryScreen.routeName,
+      path: WaveCarouselEntryScreen.routeName,
       pageBuilder: (context, state) => NoTransitionPage<void>(
         key: state.pageKey,
-        child: const EntryScreen(),
+        child: const WaveCarouselEntryScreen(),
+      ),
+    ),
+    GoRoute(
+      path: RoundCarouselEntryScreen.routeName,
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const RoundCarouselEntryScreen(),
       ),
     ),
     GoRoute(

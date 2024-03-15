@@ -1,5 +1,6 @@
 import 'package:social_kit/social_kit.dart';
-import 'package:social_kit_example/screens/entry/entry.screen.dart';
+import 'package:social_kit_example/screens/entry/round_carousel_entry.screen.dart';
+import 'package:social_kit_example/screens/entry/wave_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -34,8 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
               child: const Text("Color theme"),
             ),
             ElevatedButton(
-              onPressed: () => context.push(EntryScreen.routeName),
+              onPressed: () => context.push(WaveCarouselEntryScreen.routeName),
               child: const Text('Wave Carousel Entry Screen'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(RoundCarouselEntryScreen.routeName),
+              child: const Text('Round Carousel Entry Screen'),
             ),
             ElevatedButton(
               onPressed: () => context.push(SleepWalkerScreen.routeName),
