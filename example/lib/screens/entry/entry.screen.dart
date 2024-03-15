@@ -40,36 +40,36 @@ class _EntryScreenState extends State<EntryScreen> {
         ),
         items: [
           (
-            title: const Text("캐주얼 대화"),
+            title: const Text("Casual Talk"),
             subtitle: const Text(
-                "우리의 미팅 앱을 사용하여 이성과의 캐주얼하고 즐거운 대화에 참여하세요. 손쉽게 연결하고 채팅하세요."),
+                "Please join casual and enjoyable conversations with potential matches using our meeting app. Easily connect and chat."),
             image: CachedNetworkImage(
               imageUrl: 'https://picsum.photos/250?image=9',
               fit: BoxFit.cover,
             ),
           ),
           (
-            title: const Text("소셜 서클 확장"),
+            title: const Text("Extends Social Circle"),
             subtitle: const Text(
-                "새로운 사람들을 만나 소셜 서클을 손쉽게 확장하세요. 우리의 앱은 진정한 연결과 친근한 상호작용을 위해 디자인되었습니다."),
+                "Discover interesting individuals to connect with. Our meeting app makes it easy to broaden your horizons and meet diverse people."),
             image: CachedNetworkImage(
               imageUrl: 'https://picsum.photos/250?image=10',
               fit: BoxFit.cover,
             ),
           ),
           (
-            title: const Text("새로운 연결 발견"),
+            title: const Text("Discover New Connections"),
             subtitle: const Text(
-                "흥미로운 개인들과 연결을 찾아보세요. 우리의 미팅 앱은 시야를 넓히고 다양한 사람들을 만나기 쉽게 만들어줍니다."),
+                "Our meeting app is designed to help you find new connections and expand your social circle. Join us and meet new people."),
             image: CachedNetworkImage(
               imageUrl: 'https://picsum.photos/250?image=11',
               fit: BoxFit.cover,
             ),
           ),
           (
-            title: const Text("의미 있는 대화 즐기기"),
+            title: const Text("Meaningful Connections"),
             subtitle: const Text(
-                "정직한 대화를 통해 의미 있는 연결을 만들어보세요. 우리의 앱은 이성을 만날 수 있는 친근하고 환영받는 환경을 조성합니다."),
+                "Create meaningful connections through honest conversations. Our app fosters a friendly and welcoming environment for meeting potential partners."),
             image: CachedNetworkImage(
               imageUrl: 'https://picsum.photos/250?image=12',
               fit: BoxFit.cover,

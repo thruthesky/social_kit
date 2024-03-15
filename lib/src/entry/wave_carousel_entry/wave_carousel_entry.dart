@@ -237,13 +237,10 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
               ),
             ),
 
-<<<<<<< HEAD
             SizedBox(
               height: widget.titleSpacing,
             ),
 
-=======
->>>>>>> 09cb77f41604d030efe35bd46f1af19795b33efc
             /// 부 제목
             Positioned(
               top: MediaQuery.of(context).size.height * .73,
