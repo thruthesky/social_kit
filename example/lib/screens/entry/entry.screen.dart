@@ -15,15 +15,16 @@ class _EntryScreenState extends State<EntryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: WaveCarouselEntry(
-        bottomStroke: 4,
-        bottomStrokeColor: Colors.blue,
-        titleSpacing: 0,
+        autoSwipeInterval: 3000,
+        bottomStroke: 8,
+        bottomStrokeColor: Colors.grey,
+        titleSpacing: 16,
         start: ElevatedButton(
-            onPressed: () {
-              // print('tapped');
-              Navigator.pop(context);
-            },
-            child: const Text('Start')),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('CONTINUE'),
+        ),
         logo: Container(
           width: 72,
           height: 72,
@@ -33,45 +34,81 @@ class _EntryScreenState extends State<EntryScreen> {
           ),
           child: ClipOval(
             child: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/250/',
+              imageUrl: 'https://picsum.photos/250/?image=400',
               fit: BoxFit.cover,
             ),
           ),
         ),
         items: [
           (
-            title: const Text("Casual Talk"),
-            subtitle: const Text(
-                "Please join casual and enjoyable conversations with potential matches using our meeting app. Easily connect and chat."),
+            title: Text(
+              "Casual Talk",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              "Please join casual and enjoyable conversations with potential matches using our meeting app. Easily connect and chat.",
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+              textAlign: TextAlign.center,
+            ),
             image: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/250?image=9',
+              imageUrl: 'https://picsum.photos/250?image=90',
               fit: BoxFit.cover,
             ),
           ),
           (
-            title: const Text("Extends Social Circle"),
-            subtitle: const Text(
-                "Discover interesting individuals to connect with. Our meeting app makes it easy to broaden your horizons and meet diverse people."),
+            title: Text(
+              "Extends Social Circle",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              "Discover interesting individuals to connect with. Our meeting app makes it easy to broaden your horizons and meet diverse people.",
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+              textAlign: TextAlign.center,
+            ),
             image: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/250?image=10',
+              imageUrl: 'https://picsum.photos/250?image=100',
               fit: BoxFit.cover,
             ),
           ),
           (
-            title: const Text("Discover New Connections"),
-            subtitle: const Text(
-                "Our meeting app is designed to help you find new connections and expand your social circle. Join us and meet new people."),
+            title: Text(
+              "Discover New Connections",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              "Our meeting app is designed to help you find new connections and expand your social circle. Join us and meet new people.",
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+              textAlign: TextAlign.center,
+            ),
             image: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/250?image=11',
+              imageUrl: 'https://picsum.photos/250?image=110',
               fit: BoxFit.cover,
             ),
           ),
           (
-            title: const Text("Meaningful Connections"),
-            subtitle: const Text(
-                "Create meaningful connections through honest conversations. Our app fosters a friendly and welcoming environment for meeting potential partners."),
+            title: Text(
+              "Meaningful Connections",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            subtitle: Text(
+              "Create meaningful connections through honest conversations. Our app fosters a friendly and welcoming environment for meeting potential partners.",
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+              textAlign: TextAlign.center,
+            ),
             image: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/250?image=12',
+              imageUrl: 'https://picsum.photos/250?image=120',
               fit: BoxFit.cover,
             ),
           ),

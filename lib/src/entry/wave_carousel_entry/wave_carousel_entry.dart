@@ -56,24 +56,27 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
   @override
   void initState() {
     super.initState();
-    autoSwipe =
-        Timer.periodic(Duration(seconds: widget.autoSwipeInterval), (timer) {
-      if (mounted) {
-        controller
-            .nextPage(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.ease,
-        )
-            .then((value) {
-          // TODO Please review since the controller can
-          // be null and this is asyncronous
-          // Please check.
-          if (!mounted) return;
-          // then 에서 해야 올바른 페이지 번호가 나옴
-          indicator.add(controller.page.toInt());
-        });
-      }
-    });
+
+    if (widget.autoSwipeInterval > 100) {
+      autoSwipe = Timer.periodic(
+          Duration(milliseconds: widget.autoSwipeInterval), (timer) {
+        if (mounted) {
+          controller
+              .nextPage(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.ease,
+          )
+              .then((value) {
+            // TODO Please review since the controller can
+            // be null and this is asyncronous
+            // Please check.
+            if (!mounted) return;
+            // then 에서 해야 올바른 페이지 번호가 나옴
+            indicator.add(controller.page.toInt());
+          });
+        }
+      });
+    }
   }
 
   @override

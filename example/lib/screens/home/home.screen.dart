@@ -1,3 +1,4 @@
+import 'package:social_kit/social_kit.dart';
 import 'package:social_kit_example/screens/entry/entry.screen.dart';
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,15 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                showGeneralDialog(
+                  context: context,
+                  pageBuilder: (_, __, ___) => const ThemeScreen(),
+                );
+              },
+              child: const Text("Color theme"),
+            ),
             ElevatedButton(
               onPressed: () => context.push(EntryScreen.routeName),
               child: const Text('Wave Carousel Entry Screen'),
