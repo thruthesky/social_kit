@@ -1,105 +1,13 @@
 # Social Kit
 
-
-## Features
-
-Beautiful UI Kit for Soical Apps.
-
-## Getting started
-
-
-- Install the package
-
-
-## Usage
-
-Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
-
-
-
-
-## Glance of Theme Settings
-
-Sometimes it can be helpful to see at a glance how the theme of the current app (the app you are developing) is set. Copy the code below and paste it in your app. You will see the theme settings like TextTheme or ColorTheme. It is recommended to capture the screen during the development work and save it somewhere where you can quickly refer to it.
-
-```dart
-ElevatedButton(
-  onPressed: () {
-    showGeneralDialog(
-      context: context,
-      pageBuilder: (_, __, ___) => const ThemeScreen(),
-    );
-  },
-  child: const Text("Color theme"),
-)
-```
-
-## Theming
-
-### comicTheme
-
-This is an opinionated comic book style theme.
-
-
-- If you want to override the comic theme, you can try something like below.
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:social_kit/social_kit.dart';
-import 'package:social_kit_example/router.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      theme: comicTheme(context: context).copyWith(
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: comicTheme(context: context).colorScheme.secondary,
-            backgroundColor:
-                comicTheme(context: context).colorScheme.background,
-            elevation: 0,
-            side: BorderSide(
-              color: comicTheme(context: context).colorScheme.secondary,
-              width: 1.8,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.16),
-            ),
-            textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1,
-                ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-```
-
-
-### bigElevatedButtonTheme
-
-### elevatedButtonToListTileTheme
-
+Beautiful UI Kit for soical like apps.
 
 
 ## Widgets
 
 ### WaveCarouselEntry
+
+![WaveCarouseEntry](https://github.com/thruthesky/social_kit/blob/main/images/wave_carousel_entry.gif?raw=true)
 
 - This displays an entry style widget. It does not have a scaffold. Meaning you can add it in a screen if you want.
 - It is best fit on mobile size.
@@ -466,4 +374,81 @@ class EntryBackground extends StatelessWidget {
     );
   }
 }
+```
+
+
+
+
+## Theming
+
+### comicTheme
+
+This is an opinionated comic book style theme.
+
+- If you want to override the comic theme, you can try something like below.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:social_kit/social_kit.dart';
+import 'package:social_kit_example/router.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerConfig: router,
+      theme: comicTheme(context: context).copyWith(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: comicTheme(context: context).colorScheme.secondary,
+            backgroundColor:
+                comicTheme(context: context).colorScheme.background,
+            elevation: 0,
+            side: BorderSide(
+              color: comicTheme(context: context).colorScheme.secondary,
+              width: 1.8,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.16),
+            ),
+            textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 1,
+                ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+
+### bigElevatedButtonTheme
+
+### elevatedButtonToListTileTheme
+
+
+
+
+## Glance of Theme Settings
+
+Sometimes it can be helpful to see at a glance how the theme of the current app (the app you are developing) is set. Copy the code below and paste it in your app. You will see the theme settings like TextTheme or ColorTheme. It is recommended to capture the screen during the development work and save it somewhere where you can quickly refer to it.
+
+```dart
+ElevatedButton(
+  onPressed: () {
+    showGeneralDialog(
+      context: context,
+      pageBuilder: (_, __, ___) => const ThemeScreen(),
+    );
+  },
+  child: const Text("Color theme"),
+)
 ```
