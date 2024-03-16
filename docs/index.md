@@ -368,7 +368,7 @@ class EntryBackground extends StatelessWidget {
 
 ### BasicCarouselEntry
 
-Most of the options are similiar to `WaveCarouselEntry` except there is no `logo`, `bottom stroke` in `BasicCarouselEntry`.
+Most of the options are similiar to `WaveCarouselEntry` except there is no `logo` in `BasicCarouselEntry`.
 
 
 ### RoundCarouselEntry

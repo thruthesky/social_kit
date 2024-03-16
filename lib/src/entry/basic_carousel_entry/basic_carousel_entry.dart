@@ -24,8 +24,8 @@ class BasicCarouselEntry extends StatefulWidget {
     this.bottomGradient,
     this.indicatorColor = Colors.grey,
     this.indicatorActiveColor = Colors.white,
-    // this.bottomStroke = 0,
-    // this.bottomStrokeColor = Colors.black,
+    this.bottomStroke = 0,
+    this.bottomStrokeColor = Colors.grey,
     this.titleSpacing = 8.0,
   });
   final Widget? backgroundWidget;
@@ -36,8 +36,8 @@ class BasicCarouselEntry extends StatefulWidget {
   final Widget? bottomGradient;
   final Color? indicatorColor;
   final Color? indicatorActiveColor;
-  // final double bottomStroke;
-  // final Color bottomStrokeColor;
+  final double bottomStroke;
+  final Color bottomStrokeColor;
   final double titleSpacing;
 
   @override
@@ -141,18 +141,6 @@ class _BasicCarouselEntryState extends State<BasicCarouselEntry> {
             /// Background
             if (widget.backgroundWidget != null) widget.backgroundWidget!,
 
-            /// Bottom Stroke
-            // if (widget.bottomStroke > 0)
-            //   CustomPaint(
-            //     painter: BorderPainter(
-            //       bottomStroke: widget.bottomStroke,
-            //       bottomStrokeColor: widget.bottomStrokeColor,
-            //     ),
-            //     child: Container(
-            //       height: MediaQuery.of(context).size.height * .6,
-            //     ),
-            //   ),
-
             Stack(
               children: [
                 SizedBox(
@@ -187,6 +175,17 @@ class _BasicCarouselEntryState extends State<BasicCarouselEntry> {
                       ),
                 ),
               ],
+            ),
+
+            Positioned(
+              top: MediaQuery.of(context).size.height * .6,
+              left: 0,
+              right: 0,
+              child: Divider(
+                height: widget.bottomStroke,
+                thickness: widget.bottomStroke,
+                color: widget.bottomStrokeColor,
+              ),
             ),
 
             // Indicator

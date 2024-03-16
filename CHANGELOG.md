@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Update. Adding stroke in BasicCarouselEntry.
+
 ## 0.0.3
 
 * Add. BasicCarouselEntry, RoundCarouselEntry
