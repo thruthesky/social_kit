@@ -1,7 +1,9 @@
 # Social Kit
 
-Beautiful UI Kit for soical like apps.
+SocialKit is an Elegant UI/UX library crafted specifically for building social like applications. This is an open source project that you can fork and make PR.
 
+
+Please read the [Soical Kit Document](https://thruthesky.github.io/social_kit/) and share your thoughts in github issues.
 
 ## Widgets
 
