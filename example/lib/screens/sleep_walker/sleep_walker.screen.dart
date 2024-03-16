@@ -20,6 +20,7 @@ class _SleepWalkerScreenState extends State<SleepWalkerScreen> {
         children: [
           const Text("SleepWalker"),
           SleepWalker(
+            repeat: true,
             alignments: const [
               (
                 alignment: Alignment.topLeft,

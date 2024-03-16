@@ -1,4 +1,5 @@
 import 'package:social_kit/social_kit.dart';
+import 'package:social_kit_example/screens/entry/basic_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/entry/round_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/entry/wave_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
@@ -37,6 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ElevatedButton(
               onPressed: () => context.push(WaveCarouselEntryScreen.routeName),
               child: const Text('Wave Carousel Entry Screen'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(BasicCarouselEntryScreen.routeName),
+              child: const Text('Basic Carousel Entry Screen'),
             ),
             ElevatedButton(
               onPressed: () => context.push(RoundCarouselEntryScreen.routeName),

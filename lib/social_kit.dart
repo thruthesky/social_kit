@@ -1,3 +1,4 @@
+export 'src/entry/basic_carousel_entry/basic_carousel_entry.dart';
 export 'src/entry/round_carousel_entry/round_carousel_entry.dart';
 
 export 'src/entry/wave_carousel_entry/wave_carousel_entry.dart';

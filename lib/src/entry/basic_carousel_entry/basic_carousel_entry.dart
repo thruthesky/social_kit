@@ -5,7 +5,7 @@ import 'package:loop_page_view/loop_page_view.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-typedef RoundCarouselItem = ({
+typedef BasicCarouselItem = ({
   Widget title,
   Widget subtitle,
   Widget image,
@@ -13,8 +13,8 @@ typedef RoundCarouselItem = ({
 
 /// Round Carousel Entry
 ///
-class RoundCarouselEntry extends StatefulWidget {
-  const RoundCarouselEntry({
+class BasicCarouselEntry extends StatefulWidget {
+  const BasicCarouselEntry({
     super.key,
     this.backgroundWidget,
     required this.items,
@@ -24,27 +24,27 @@ class RoundCarouselEntry extends StatefulWidget {
     this.bottomGradient,
     this.indicatorColor = Colors.grey,
     this.indicatorActiveColor = Colors.white,
-    this.bottomStroke = 0,
-    this.bottomStrokeColor = Colors.black,
-    this.titleSpacing = 16.0,
+    // this.bottomStroke = 0,
+    // this.bottomStrokeColor = Colors.black,
+    this.titleSpacing = 8.0,
   });
   final Widget? backgroundWidget;
-  final List<RoundCarouselItem> items;
+  final List<BasicCarouselItem> items;
   // final VoidCallback onStart;
   final Widget start;
   final int autoSwipeInterval;
   final Widget? bottomGradient;
   final Color? indicatorColor;
   final Color? indicatorActiveColor;
-  final double bottomStroke;
-  final Color bottomStrokeColor;
+  // final double bottomStroke;
+  // final Color bottomStrokeColor;
   final double titleSpacing;
 
   @override
-  State<RoundCarouselEntry> createState() => _RoundCarouselEntryState();
+  State<BasicCarouselEntry> createState() => _BasicCarouselEntryState();
 }
 
-class _RoundCarouselEntryState extends State<RoundCarouselEntry> {
+class _BasicCarouselEntryState extends State<BasicCarouselEntry> {
   DragUpdateDetails? updateDetails;
   LoopPageController controller = LoopPageController();
   final indicator = PublishSubject<int>();
@@ -142,114 +142,58 @@ class _RoundCarouselEntryState extends State<RoundCarouselEntry> {
             if (widget.backgroundWidget != null) widget.backgroundWidget!,
 
             /// Bottom Stroke
-            Column(
+            // if (widget.bottomStroke > 0)
+            //   CustomPaint(
+            //     painter: BorderPainter(
+            //       bottomStroke: widget.bottomStroke,
+            //       bottomStrokeColor: widget.bottomStrokeColor,
+            //     ),
+            //     child: Container(
+            //       height: MediaQuery.of(context).size.height * .6,
+            //     ),
+            //   ),
+
+            Stack(
               children: [
-                SizedBox(height: widget.bottomStroke),
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(600),
-                    bottomRight: Radius.circular(140),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .6,
+                  child: IgnorePointer(
+                    child: LoopPageView.builder(
+                      controller: controller,
+                      itemCount: widget.items.length,
+                      itemBuilder: (_, i) => widget.items[i].image,
+                    ),
                   ),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * .7,
-                    color: widget.bottomStrokeColor,
-                  ),
+                ),
+
+                /// Graident on the picture
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: widget.bottomGradient ??
+                      Container(
+                        height: MediaQuery.of(context).size.height * .3,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.transparent,
+                              Colors.black.withOpacity(.99),
+                            ],
+                          ),
+                        ),
+                      ),
                 ),
               ],
             ),
 
-            /// Images
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(600),
-                bottomRight: Radius.circular(140),
-              ),
-              child: Stack(
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * .7,
-                    child: IgnorePointer(
-                      child: LoopPageView.builder(
-                        controller: controller,
-                        itemCount: widget.items.length,
-                        itemBuilder: (_, i) => widget.items[i].image,
-                      ),
-                    ),
-                  ),
-
-                  /// Graident on the picture
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: widget.bottomGradient ??
-                        Container(
-                          height: MediaQuery.of(context).size.height * .3,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Colors.transparent,
-                                Colors.black.withOpacity(.99),
-                              ],
-                            ),
-                          ),
-                        ),
-                  ),
-                ],
-              ),
-            ),
-
-            /// Graidient on the top
-            Container(
-              width: double.infinity,
-              height: 150,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.black.withOpacity(.7),
-                    Colors.black.withOpacity(0),
-                  ],
-                ),
-              ),
-            ),
-
-            /// Title and subtitle
-            Padding(
-              padding: const EdgeInsets.only(left: 24, top: 60),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  StreamBuilder<Object>(
-                    stream: indicator,
-                    builder: (context, snapshot) {
-                      return widget
-                          .items[int.parse(snapshot.data?.toString() ?? '0')]
-                          .title;
-                    },
-                  ),
-                  SizedBox(
-                    height: widget.titleSpacing,
-                  ),
-                  StreamBuilder<Object>(
-                    stream: indicator,
-                    builder: (context, snapshot) {
-                      return widget
-                          .items[int.parse(snapshot.data?.toString() ?? '0')]
-                          .subtitle;
-                    },
-                  ),
-                ],
-              ),
-            ),
-
             // Indicator
             Positioned(
-              top: MediaQuery.of(context).size.height * .66,
-              right: MediaQuery.of(context).size.width * .18,
+              top: MediaQuery.of(context).size.height * .57,
+              left: 0,
+              right: 0,
               child: Center(
                 child: StreamBuilder<int>(
                   stream: indicator,
@@ -270,7 +214,48 @@ class _RoundCarouselEntryState extends State<RoundCarouselEntry> {
               ),
             ),
 
-            /// Start button
+            /// 제목
+            Positioned(
+              top: MediaQuery.of(context).size.height * .70,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: StreamBuilder<Object>(
+                    stream: indicator,
+                    builder: (context, snapshot) {
+                      return widget
+                          .items[int.parse(snapshot.data?.toString() ?? '0')]
+                          .title;
+                    }),
+              ),
+            ),
+
+            SizedBox(
+              height: widget.titleSpacing,
+            ),
+
+            /// 부 제목
+            Positioned(
+              top: MediaQuery.of(context).size.height * .73,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    top: widget.titleSpacing,
+                  ),
+                  width: MediaQuery.of(context).size.width * .7,
+                  child: StreamBuilder<Object>(
+                    stream: indicator,
+                    builder: (context, snapshot) {
+                      return widget
+                          .items[int.parse(snapshot.data?.toString() ?? '0')]
+                          .subtitle;
+                    },
+                  ),
+                ),
+              ),
+            ),
             Positioned(
               bottom: 0,
               left: 0,
@@ -279,8 +264,6 @@ class _RoundCarouselEntryState extends State<RoundCarouselEntry> {
                 child: Center(
                   child: Column(
                     children: [
-                      const Text('Tap to enter new world!'),
-                      const SizedBox(height: 12),
                       widget.start,
                       const SizedBox(height: 16),
                     ],

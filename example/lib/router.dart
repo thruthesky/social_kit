@@ -1,3 +1,4 @@
+import 'package:social_kit_example/screens/entry/basic_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/entry/round_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/entry/wave_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/home/home.screen.dart';
@@ -52,6 +53,13 @@ final router = GoRouter(
       pageBuilder: (context, state) => NoTransitionPage<void>(
         key: state.pageKey,
         child: const RoundCarouselEntryScreen(),
+      ),
+    ),
+    GoRoute(
+      path: BasicCarouselEntryScreen.routeName,
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const BasicCarouselEntryScreen(),
       ),
     ),
     GoRoute(

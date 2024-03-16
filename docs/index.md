@@ -7,7 +7,32 @@ Beautiful UI Kit for soical like apps.
 
 ### WaveCarouselEntry
 
-![WaveCarouseEntry](https://github.com/thruthesky/social_kit/blob/main/images/wave_carousel_entry.gif?raw=true)
+
+- This displays an entry style widget. It does not have a scaffold. Meaning you can add it in a screen if you want.
+- It is best fit on mobile size.
+
+
+- `logo` is a widget that is displayed at the center-left. You can put whatever widget there.
+
+- `background` is a widget to put as a background. Or the background will be the background color of the theme.
+
+- `bottomStroke` is the width of the bottom line at the bottom of photos. Ex: 5
+- `bottomStrokeColor` is the color of `bottomStroke`. Ex: Colors.blue
+
+
+- `start` is the button at the very bottom to display "CONTINUE" OR "GET STARTED".
+- `autoSwipleInterval` is the interval in ms to swipe next slide. It must be bigger than 100 to activate the auto swipe.
+
+- `items` is an array that has the title, subtitle and the photo to display in the carousel.
+
+- `titleSpacing` is the spacing between `title` and `subtitle`.
+
+
+- `bottomGradient` is a widget that displays a graide at the bottom of the photos. Since it is a widget, you can put whatever UI as the `bottomGraident`.
+
+- `indicatorColor` is the color of inactive pagination indicator.
+- `indicatorActiveColor` is the color of active pagination indicator.
+
 
 
 ### Sleep Walker
