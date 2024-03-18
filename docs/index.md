@@ -441,10 +441,11 @@ class MyApp extends StatelessWidget {
 
 * `CardListItems` is a card with list items.
 
-------------------------------------
-| Before | After |
-------------------------------------
-|![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)|![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)|
+
+| Before applying theme | After applying theme |
+|--------|-------|
+|![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items_plain.jpg?raw=true)|![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)|
+
 
 
 ```dart
