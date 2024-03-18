@@ -41,7 +41,8 @@ class CardListItems extends StatelessWidget {
                         item.label,
                         style: textStyle,
                       ),
-                      trailing: item.trailing,
+                      trailing: SizedBox(
+                          width: 24, child: Center(child: item.trailing)),
                       onTap: item.onTap,
                       dense: true,
                       shape: const RoundedRectangleBorder(
