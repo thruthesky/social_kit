@@ -437,6 +437,44 @@ class MyApp extends StatelessWidget {
 
 
 
+### CardListItems
+
+* `CardListItems` is a card with list items.
+
+------------------------------------
+| Before | After |
+------------------------------------
+||![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)|
+
+
+```dart
+CardListItems(
+  textStyle: Theme.of(context).textTheme.bodySmall,
+  items: [
+    CardListItem(
+      label: '내 정보',
+      trailing: const FaIcon(
+        FontAwesomeIcons.thinUser,
+        size: 20,
+      ),
+      onTap: () {
+        UserService.instance.showProfileUpdateScreen(context);
+      },
+    ),
+    CardListItem(
+      label: '내 프로필 보기',
+      trailing: const FaIcon(
+        FontAwesomeIcons.thinLockOpen,
+        size: 20,
+      ),
+      onTap: () {
+        UserService.instance.showProfileUpdateScreen(context);
+      },
+    ),
+  ],
+),
+```
+
 
 ## Glance of Theme Settings
 
