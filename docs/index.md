@@ -444,7 +444,7 @@ class MyApp extends StatelessWidget {
 ------------------------------------
 | Before | After |
 ------------------------------------
-||![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)|
+|![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)|![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)|
 
 
 ```dart
