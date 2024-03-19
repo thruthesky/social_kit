@@ -54,6 +54,20 @@ class ThemeBody extends StatelessWidget {
                     );
                   },
                 ),
+                CardListItem(
+                  label: 'Whatever menu you like',
+                  trailing: const Icon(
+                    Icons.whatshot,
+                    size: 20,
+                  ),
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Whatever menu you like'),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ],
