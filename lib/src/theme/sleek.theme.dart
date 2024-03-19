@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
-ThemeData sleekTheme({required BuildContext context, seedColor = Colors.blue}) {
-  final colorScheme = ColorScheme.fromSeed(seedColor: seedColor);
+ThemeData sleekTheme({
+  required BuildContext context,
+  ColorScheme? colorScheme,
+}) {
+  colorScheme ??= ColorScheme.fromSeed(seedColor: Colors.blue).copyWith(
+    outline: Colors.grey.shade300,
+    surface: Colors.indigo.shade50.withAlpha(170),
+    surfaceVariant: Colors.indigo.shade100,
+  );
   return ThemeData(
-    // fontFamily: "Pretendard",
     colorScheme: colorScheme,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: colorScheme.secondary,
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         elevation: 0,
-        side: BorderSide(
-          color: colorScheme.secondary,
-          width: 1.8,
-        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.16),
         ),
@@ -67,6 +69,21 @@ ThemeData sleekTheme({required BuildContext context, seedColor = Colors.blue}) {
       labelSmall: TextStyle(
         fontSize: 10,
         fontWeight: FontWeight.w300,
+      ),
+    ),
+    dividerTheme: DividerThemeData(
+      thickness: 1,
+      space: 0,
+      color: colorScheme.surfaceVariant,
+    ),
+    cardTheme: CardTheme(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+        // side: BorderSide(
+        //   color: colorScheme.secondary,
+        //   width: 2,
+        // ),
       ),
     ),
     useMaterial3: true,

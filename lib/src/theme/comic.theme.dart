@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-ThemeData comicTheme(
-    {required BuildContext context, ColorScheme? colorScheme}) {
+ThemeData comicTheme({
+  required BuildContext context,
+  ColorScheme? colorScheme,
+}) {
   colorScheme ??= ColorScheme.fromSeed(seedColor: Colors.blue).copyWith(
     outline: Colors.grey.shade300,
     surface: Colors.indigo.shade50.withAlpha(100),
   );
   return ThemeData(
-    // fontFamily: "Pretendard",
     colorScheme: colorScheme,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -73,7 +74,6 @@ ThemeData comicTheme(
         fontWeight: FontWeight.w300,
       ),
     ),
-
     dividerTheme: DividerThemeData(
       thickness: 2,
       space: 0,
