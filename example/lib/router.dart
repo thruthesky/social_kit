@@ -5,6 +5,9 @@ import 'package:social_kit_example/screens/home/home.screen.dart';
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:social_kit_example/screens/theme/comic.theme.screen.dart';
+import 'package:social_kit_example/screens/theme/default.theme.screen.dart';
+import 'package:social_kit_example/screens/theme/sleek.theme.screen.dart';
 
 /// 1. Apply to MaterialApp
 /// return MaterialApp.router(
@@ -67,6 +70,27 @@ final router = GoRouter(
       pageBuilder: (context, state) => NoTransitionPage<void>(
         key: state.pageKey,
         child: const SleepWalkerScreen(),
+      ),
+    ),
+    GoRoute(
+      path: CommicThemeScreen.routeName,
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const CommicThemeScreen(),
+      ),
+    ),
+    GoRoute(
+      path: SleekThemeScreen.routeName,
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const SleekThemeScreen(),
+      ),
+    ),
+    GoRoute(
+      path: DefaultThemeScreen.routeName,
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const DefaultThemeScreen(),
       ),
     ),
   ],

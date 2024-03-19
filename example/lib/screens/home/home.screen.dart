@@ -5,6 +5,9 @@ import 'package:social_kit_example/screens/entry/wave_carousel_entry.screen.dart
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:social_kit_example/screens/theme/comic.theme.screen.dart';
+import 'package:social_kit_example/screens/theme/default.theme.screen.dart';
+import 'package:social_kit_example/screens/theme/sleek.theme.screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/';
@@ -34,6 +37,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
               child: const Text("Color theme"),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(DefaultThemeScreen.routeName),
+              child: const Text('Flutter Default Theme Design'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(CommicThemeScreen.routeName),
+              child: const Text('Comic Theme Design'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(SleekThemeScreen.routeName),
+              child: const Text('Sleek Theme Design'),
             ),
             ElevatedButton(
               onPressed: () => context.push(WaveCarouselEntryScreen.routeName),
