@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
 ### sleekTheme
 
 
+This is another opinionated theme design. You can simply apply it in your theme setting.
 
 
 ### bigElevatedButtonTheme
@@ -459,23 +460,45 @@ CardListItems(
   textStyle: Theme.of(context).textTheme.bodySmall,
   items: [
     CardListItem(
-      label: '내 정보',
-      trailing: const FaIcon(
-        FontAwesomeIcons.thinUser,
+      label: 'My profile',
+      trailing: const Icon(
+        Icons.person,
         size: 20,
       ),
       onTap: () {
-        UserService.instance.showProfileUpdateScreen(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('My profile'),
+          ),
+        );
       },
     ),
     CardListItem(
-      label: '내 프로필 보기',
-      trailing: const FaIcon(
-        FontAwesomeIcons.thinLockOpen,
+      label: 'View my public profile',
+      trailing: const Icon(
+        Icons.lock_open,
         size: 20,
       ),
       onTap: () {
-        UserService.instance.showProfileUpdateScreen(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('View my public profile'),
+          ),
+        );
+      },
+    ),
+    CardListItem(
+      label: 'Whatever menu you like',
+      trailing: const Icon(
+        Icons.whatshot,
+        size: 20,
+      ),
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Whatever menu you like'),
+          ),
+        );
       },
     ),
   ],
