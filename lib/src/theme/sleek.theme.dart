@@ -43,18 +43,6 @@ ThemeData sleekTheme({required BuildContext context, seedColor = Colors.blue}) {
         borderSide: BorderSide(color: Colors.transparent),
       ),
     ),
-    listTileTheme: Theme.of(context).listTileTheme.copyWith(
-          minVerticalPadding: 10,
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 0,
-            horizontal: 20,
-          ),
-          tileColor: Theme.of(context).colorScheme.surface,
-          visualDensity: VisualDensity.compact,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-        ),
     textTheme: const TextTheme(
       bodyLarge: TextStyle(
         fontSize: 16,

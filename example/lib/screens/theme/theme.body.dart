@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:social_kit/social_kit.dart';
+
+class ThemeBody extends StatelessWidget {
+  const ThemeBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          children: [
+            const Text("ElevatedButton"),
+            ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('ElevatedButton'),
+                  ),
+                );
+              },
+              child: const Text('ElevatedButton'),
+            ),
+            const Text("CommicTheme"),
+            CardListItems(
+              textStyle: Theme.of(context).textTheme.bodySmall,
+              items: [
+                CardListItem(
+                  label: 'My profile',
+                  trailing: const Icon(
+                    Icons.person,
+                    size: 20,
+                  ),
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('My profile'),
+                      ),
+                    );
+                  },
+                ),
+                CardListItem(
+                  label: 'View my public profile',
+                  trailing: const Icon(
+                    Icons.lock_open,
+                    size: 20,
+                  ),
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('View my public profile'),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
