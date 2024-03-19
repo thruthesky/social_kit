@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// ElevatedButton 을 넓고 높게 만들기
-ThemeData bigElevatedButtonTheme(BuildContext context) {
+ThemeData themeDataBigElevatedButton(BuildContext context) {
   return Theme.of(context).copyWith(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
@@ -14,7 +14,7 @@ ThemeData bigElevatedButtonTheme(BuildContext context) {
 }
 
 /// ElevatedButton 을 ListTile 처럼 만들기
-ThemeData elevatedButtonToListTileTheme(BuildContext context) {
+ThemeData themeDataElevatedButtonToListTile(BuildContext context) {
   return Theme.of(context).copyWith(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(

@@ -59,9 +59,14 @@ class MyApp extends StatelessWidget {
 
 
 
-### bigElevatedButtonTheme
+### themeDataBigElevatedButton
 
-### elevatedButtonToListTileTheme
+This is a function that returns a theme data to make the ElevatedButton wide and big.
+
+### themeDataElevatedButtonToListTile
+
+This is a function that returns a theme data to make the ElevatedButton look like to ListTile.
+
 
 
 
