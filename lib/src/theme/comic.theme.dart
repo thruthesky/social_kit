@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
-ThemeData comicTheme({required BuildContext context, seedColor = Colors.blue}) {
-  final colorScheme = ColorScheme.fromSeed(seedColor: seedColor);
+ThemeData comicTheme(
+    {required BuildContext context, ColorScheme? colorScheme}) {
+  colorScheme ??= ColorScheme.fromSeed(seedColor: Colors.blue).copyWith(
+    outline: Colors.grey.shade300,
+    surface: Colors.indigo.shade50.withAlpha(100),
+  );
   return ThemeData(
     // fontFamily: "Pretendard",
     colorScheme: colorScheme,
@@ -67,6 +71,22 @@ ThemeData comicTheme({required BuildContext context, seedColor = Colors.blue}) {
       labelSmall: TextStyle(
         fontSize: 10,
         fontWeight: FontWeight.w300,
+      ),
+    ),
+
+    dividerTheme: DividerThemeData(
+      thickness: 2,
+      space: 0,
+      color: colorScheme.secondary,
+    ),
+    cardTheme: CardTheme(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+        side: BorderSide(
+          color: colorScheme.secondary,
+          width: 2,
+        ),
       ),
     ),
     useMaterial3: true,
