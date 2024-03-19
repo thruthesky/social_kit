@@ -453,6 +453,7 @@ Most of the options are similiar to `WaveCarouselEntry` except there is no `logo
 
 * `CardListItems` is a card with list items.
 
+* `divider` will display a Divider.
 
 | Before applying theme | After applying theme |
 |--------|-------|

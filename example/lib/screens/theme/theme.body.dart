@@ -70,6 +70,45 @@ class ThemeBody extends StatelessWidget {
                 ),
               ],
             ),
+            const Text("ListTile"),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('My profile'),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('My profile'),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 8),
+            ListTile(
+              leading: const Icon(Icons.lock_open),
+              title: const Text('View my public profile'),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('View my public profile'),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 8),
+            ListTile(
+              leading: const Icon(Icons.whatshot),
+              title: const Text('Whatever menu you like'),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Whatever menu you like'),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

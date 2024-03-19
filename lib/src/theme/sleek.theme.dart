@@ -5,9 +5,9 @@ ThemeData sleekTheme({
   ColorScheme? colorScheme,
 }) {
   colorScheme ??= ColorScheme.fromSeed(seedColor: Colors.blue).copyWith(
-    outline: Colors.grey.shade300,
-    surface: Colors.indigo.shade50.withAlpha(170),
-    surfaceVariant: Colors.indigo.shade100,
+    surface: Colors.indigo.shade50,
+    surfaceVariant: Colors.indigo.shade100.withAlpha(160),
+    outline: Colors.indigo.shade300,
   );
   return ThemeData(
     colorScheme: colorScheme,
@@ -78,12 +78,9 @@ ThemeData sleekTheme({
     ),
     cardTheme: CardTheme(
       elevation: 0,
+      color: colorScheme.surface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
-        // side: BorderSide(
-        //   color: colorScheme.secondary,
-        //   width: 2,
-        // ),
       ),
     ),
     listTileTheme: Theme.of(context).listTileTheme.copyWith(
@@ -92,7 +89,7 @@ ThemeData sleekTheme({
             vertical: 0,
             horizontal: 20,
           ),
-          tileColor: Theme.of(context).colorScheme.surface,
+          tileColor: colorScheme.surfaceVariant,
           visualDensity: VisualDensity.compact,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
