@@ -2,6 +2,7 @@ import 'package:social_kit/social_kit.dart';
 import 'package:social_kit_example/screens/entry/basic_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/entry/round_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/entry/wave_carousel_entry.screen.dart';
+import 'package:social_kit_example/screens/setting/setting.screen.dart';
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -65,6 +66,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ElevatedButton(
               onPressed: () => context.push(SleepWalkerScreen.routeName),
               child: const Text('Sleep Walker'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(SettingScreen.routeName),
+              child: const Text('Settings Screen'),
             ),
           ],
         ),

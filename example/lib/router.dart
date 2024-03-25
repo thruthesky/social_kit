@@ -2,6 +2,7 @@ import 'package:social_kit_example/screens/entry/basic_carousel_entry.screen.dar
 import 'package:social_kit_example/screens/entry/round_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/entry/wave_carousel_entry.screen.dart';
 import 'package:social_kit_example/screens/home/home.screen.dart';
+import 'package:social_kit_example/screens/setting/setting.screen.dart';
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -91,6 +92,13 @@ final router = GoRouter(
       pageBuilder: (context, state) => NoTransitionPage<void>(
         key: state.pageKey,
         child: const DefaultThemeScreen(),
+      ),
+    ),
+    GoRoute(
+      path: SettingScreen.routeName,
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const SettingScreen(),
       ),
     ),
   ],
