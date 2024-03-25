@@ -449,23 +449,23 @@ Most of the options are similiar to `WaveCarouselEntry` except there is no `logo
 
 
 
-### CardListItems
+### CardListView
 
-* `CardListItems` is a card with list items.
+* `CardListView` is a card with list items.
 
 * `divider` will display a Divider.
 
 | Before applying theme | After applying theme |
 |--------|-------|
-|![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items_plain.jpg?raw=true)|![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)|
+|![CardListView](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items_plain.jpg?raw=true)|![CardListView](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)|
 
 
 
 ```dart
-CardListItems(
+CardListView(
   textStyle: Theme.of(context).textTheme.bodySmall,
   items: [
-    CardListItem(
+    CardListTile(
       label: 'My profile',
       trailing: const Icon(
         Icons.person,
@@ -479,7 +479,7 @@ CardListItems(
         );
       },
     ),
-    CardListItem(
+    CardListTile(
       label: 'View my public profile',
       trailing: const Icon(
         Icons.lock_open,
@@ -493,7 +493,7 @@ CardListItems(
         );
       },
     ),
-    CardListItem(
+    CardListTile(
       label: 'Whatever menu you like',
       trailing: const Icon(
         Icons.whatshot,

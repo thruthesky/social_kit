@@ -23,10 +23,10 @@ class ThemeBody extends StatelessWidget {
               child: const Text('ElevatedButton'),
             ),
             const Text("CommicTheme"),
-            CardListItems(
+            CardListView(
               textStyle: Theme.of(context).textTheme.bodySmall,
-              items: [
-                CardListItem(
+              children: [
+                CardListTile(
                   label: 'My profile',
                   trailing: const Icon(
                     Icons.person,
@@ -40,7 +40,7 @@ class ThemeBody extends StatelessWidget {
                     );
                   },
                 ),
-                CardListItem(
+                CardListTile(
                   label: 'View my public profile',
                   trailing: const Icon(
                     Icons.lock_open,
@@ -54,7 +54,7 @@ class ThemeBody extends StatelessWidget {
                     );
                   },
                 ),
-                CardListItem(
+                CardListTile(
                   label: 'Whatever menu you like',
                   trailing: const Icon(
                     Icons.whatshot,
