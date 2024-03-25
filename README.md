@@ -34,18 +34,15 @@ Please read the [Soical Kit Document](https://thruthesky.github.io/social_kit/) 
 ![CardListItems](https://github.com/thruthesky/social_kit/blob/main/images/card_list_items.jpg?raw=true)
 
 
-## Theming
-
-### comicTheme
+### Setting UI
 
 
-
-### bigElevatedButtonTheme
-
-### elevatedButtonToListTileTheme
+![Settings UI](https://github.com/thruthesky/social_kit/blob/main/images/settings.jpg?raw=true)
 
 
 
 
-## Glance of Theme Settings
+
+
+
 

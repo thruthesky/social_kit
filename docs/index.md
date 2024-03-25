@@ -528,6 +528,10 @@ CardListView(
 ## Settings UI
 
 
+You can use `CardListView` as the UI in setting screen. See the source code of [settings.screen.dart](https://github.com/thruthesky/social_kit/blob/main/example/lib/screens/setting/setting.screen.dart) in the example.
+
+![Settings UI](https://github.com/thruthesky/social_kit/blob/main/images/settings.jpg?raw=true)
+
 
 
 ## Glance of Theme Settings
