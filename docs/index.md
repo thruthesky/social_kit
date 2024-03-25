@@ -6,6 +6,9 @@ Beautiful UI Kit for soical like apps.
 
 ## Theming
 
+There are three themes that comes with SocialKit. You can develop your own theme. If you do, please share with us.
+
+
 ### comicTheme
 
 This is an opinionated comic book style theme.
@@ -58,6 +61,15 @@ class MyApp extends StatelessWidget {
 
 
 This is another opinionated theme design. You can simply apply it in your theme setting.
+
+
+### flatTheme
+
+This is the flat theme that do more on flat style design. By default, flat theme has no border. It is supposed to draw the boundary with background. But if you want, you can override the theme and add your own border.
+
+
+
+
 
 
 ### themeDataBigElevatedButton
@@ -453,7 +465,8 @@ Most of the options are similiar to `WaveCarouselEntry` except there is no `logo
 
 * `CardListView` is a card with list items.
 
-* `divider` will display a Divider.
+* `divider` will display a Divider. By default it is `SizedBox(height: 7)`. You can pass it `null` to not display the divider.
+
 
 | Before applying theme | After applying theme |
 |--------|-------|
@@ -510,6 +523,11 @@ CardListView(
   ],
 ),
 ```
+
+
+## Settings UI
+
+
 
 
 ## Glance of Theme Settings

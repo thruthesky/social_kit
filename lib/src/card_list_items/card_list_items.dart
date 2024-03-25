@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class CardListTile {
   final String label;
+  final String? sublabel;
   final Widget? leading;
   final Widget? trailing;
   final VoidCallback onTap;
 
   const CardListTile({
     required this.label,
+    this.sublabel,
     this.leading,
     this.trailing,
     required this.onTap,
@@ -17,14 +19,16 @@ class CardListTile {
 class CardListView extends StatelessWidget {
   const CardListView({
     super.key,
-    this.textStyle,
+    this.labelStyle,
+    this.sublabelStyle,
     required this.children,
-    this.divider = false,
+    this.divider = const SizedBox(height: 7),
   });
 
-  final TextStyle? textStyle;
+  final TextStyle? labelStyle;
+  final TextStyle? sublabelStyle;
   final List<CardListTile> children;
-  final bool divider;
+  final Widget? divider;
 
   List<Widget> get cardListItems {
     final list = children.map(
@@ -32,9 +36,15 @@ class CardListView extends StatelessWidget {
         return ListTile(
           // visualDensity: VisualDensity.compact,
           leading: item.leading,
-          title: Text(
-            item.label,
-            style: textStyle,
+          title: Row(
+            children: [
+              Text(
+                item.label,
+                style: labelStyle,
+              ),
+              const Spacer(),
+              Text(item.sublabel ?? '', style: sublabelStyle),
+            ],
           ),
           trailing: SizedBox(width: 24, child: Center(child: item.trailing)),
           onTap: item.onTap,
@@ -52,11 +62,7 @@ class CardListView extends StatelessWidget {
         ..add(element)
         ..add(Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: divider
-              ? const Divider(height: 9)
-              : const SizedBox(
-                  height: 7,
-                ),
+          child: divider ?? const SizedBox.shrink(),
         )),
     )..removeLast();
   }
