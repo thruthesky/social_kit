@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CardListItem {
+class CardListTile {
   final String label;
   final Widget? leading;
   final Widget? trailing;
   final VoidCallback onTap;
 
-  const CardListItem({
+  const CardListTile({
     required this.label,
     this.leading,
     this.trailing,
@@ -14,20 +14,20 @@ class CardListItem {
   });
 }
 
-class CardListItems extends StatelessWidget {
-  const CardListItems({
+class CardListView extends StatelessWidget {
+  const CardListView({
     super.key,
     this.textStyle,
-    required this.items,
+    required this.children,
     this.divider = false,
   });
 
   final TextStyle? textStyle;
-  final List<CardListItem> items;
+  final List<CardListTile> children;
   final bool divider;
 
   List<Widget> get cardListItems {
-    final list = items.map(
+    final list = children.map(
       (item) {
         return ListTile(
           // visualDensity: VisualDensity.compact,
