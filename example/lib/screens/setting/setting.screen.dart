@@ -49,7 +49,10 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
               ),
               child: const SettingItems(
-                divider: null,
+                divider: Divider(
+                  height: 1,
+                  thickness: 1,
+                ),
               ),
             ),
           ],
