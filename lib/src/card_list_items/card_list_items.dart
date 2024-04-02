@@ -22,7 +22,7 @@ class CardListView extends StatelessWidget {
     this.labelStyle,
     this.sublabelStyle,
     required this.children,
-    this.divider = const SizedBox(height: 7),
+    this.divider = const SizedBox(height: 0),
   });
 
   final TextStyle? labelStyle;

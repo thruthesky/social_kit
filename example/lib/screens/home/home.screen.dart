@@ -6,6 +6,7 @@ import 'package:social_kit_example/screens/setting/setting.screen.dart';
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:social_kit_example/screens/text_box/text_box.screen.dart';
 import 'package:social_kit_example/screens/theme/comic.theme.screen.dart';
 import 'package:social_kit_example/screens/theme/default.theme.screen.dart';
 import 'package:social_kit_example/screens/theme/sleek.theme.screen.dart';
@@ -70,6 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ElevatedButton(
               onPressed: () => context.push(SettingScreen.routeName),
               child: const Text('Settings Screen'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.push(TextBoxScreen.routeName),
+              child: const Text('TextBox'),
             ),
           ],
         ),

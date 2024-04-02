@@ -6,6 +6,7 @@ import 'package:social_kit_example/screens/setting/setting.screen.dart';
 import 'package:social_kit_example/screens/sleep_walker/sleep_walker.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:social_kit_example/screens/text_box/text_box.screen.dart';
 import 'package:social_kit_example/screens/theme/comic.theme.screen.dart';
 import 'package:social_kit_example/screens/theme/default.theme.screen.dart';
 import 'package:social_kit_example/screens/theme/sleek.theme.screen.dart';
@@ -99,6 +100,13 @@ final router = GoRouter(
       pageBuilder: (context, state) => NoTransitionPage<void>(
         key: state.pageKey,
         child: const SettingScreen(),
+      ),
+    ),
+    GoRoute(
+      path: TextBoxScreen.routeName,
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const TextBoxScreen(),
       ),
     ),
   ],

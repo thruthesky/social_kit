@@ -4,85 +4,6 @@ Beautiful UI Kit for soical like apps.
 
 
 
-## Theming
-
-There are three themes that comes with SocialKit. You can develop your own theme. If you do, please share with us.
-
-
-### comicTheme
-
-This is an opinionated comic book style theme.
-
-- If you want to override the comic theme, you can try something like below.
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:social_kit/social_kit.dart';
-import 'package:social_kit_example/router.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      theme: comicTheme(context: context).copyWith(
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: comicTheme(context: context).colorScheme.secondary,
-            backgroundColor:
-                comicTheme(context: context).colorScheme.background,
-            elevation: 0,
-            side: BorderSide(
-              color: comicTheme(context: context).colorScheme.secondary,
-              width: 1.8,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.16),
-            ),
-            textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1,
-                ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-```
-
-### sleekTheme
-
-
-This is another opinionated theme design. You can simply apply it in your theme setting.
-
-
-### flatTheme
-
-This is the flat theme that do more on flat style design. By default, flat theme has no border. It is supposed to draw the boundary with background. But if you want, you can override the theme and add your own border.
-
-
-
-
-
-
-### themeDataBigElevatedButton
-
-This is a function that returns a theme data to make the ElevatedButton wide and big.
-
-### themeDataElevatedButtonToListTile
-
-This is a function that returns a theme data to make the ElevatedButton look like to ListTile.
-
-
-
-
 ## Widgets
 
 ### WaveCarouselEntry
@@ -534,6 +455,11 @@ You can use `CardListView` as the UI in setting screen. See the source code of [
 
 
 
+## Theme Design
+
+See [Theme Design](./theme.md) for details.
+
+
 ## Glance of Theme Settings
 
 Sometimes it can be helpful to see at a glance how the theme of the current app (the app you are developing) is set. Copy the code below and paste it in your app. You will see the theme settings like TextTheme or ColorTheme. It is recommended to capture the screen during the development work and save it somewhere where you can quickly refer to it.
@@ -549,3 +475,5 @@ ElevatedButton(
   child: const Text("Color theme"),
 )
 ```
+
+

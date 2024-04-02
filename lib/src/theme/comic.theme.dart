@@ -4,7 +4,8 @@ ThemeData comicTheme({
   required BuildContext context,
   ColorScheme? colorScheme,
 }) {
-  colorScheme ??= ColorScheme.fromSeed(seedColor: Colors.blue).copyWith();
+  colorScheme ??= ColorScheme.fromSeed(seedColor: Colors.blue);
+
   return ThemeData(
     colorScheme: colorScheme,
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -35,16 +36,22 @@ ThemeData comicTheme({
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: Theme.of(context).colorScheme.onSurface.withAlpha(5),
+      fillColor: colorScheme.onSurface.withAlpha(5),
       floatingLabelStyle: Theme.of(context).textTheme.labelLarge,
       floatingLabelBehavior: FloatingLabelBehavior.always,
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16.16),
-        borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface),
+        borderSide: BorderSide(
+          color: colorScheme.onSurface,
+          width: 2.4,
+        ),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16.16),
-        borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface),
+        borderSide: BorderSide(
+          color: colorScheme.onSurface.withAlpha(128),
+          width: 1.8,
+        ),
       ),
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16.16),
@@ -53,39 +60,15 @@ ThemeData comicTheme({
         borderSide: BorderSide(color: Colors.transparent),
       ),
     ),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-      ),
-      bodySmall: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-      ),
-      labelLarge: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-      ),
-      labelMedium: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w300,
-      ),
-      labelSmall: TextStyle(
-        fontSize: 10,
-        fontWeight: FontWeight.w300,
-      ),
-    ),
     dividerTheme: DividerThemeData(
       thickness: 2,
       space: 0,
       color: colorScheme.secondary,
     ),
     cardTheme: CardTheme(
+      clipBehavior: Clip.hardEdge,
       elevation: 0,
+      // margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
         side: BorderSide(
@@ -102,7 +85,7 @@ ThemeData comicTheme({
             vertical: 0,
             horizontal: 20,
           ),
-          tileColor: Theme.of(context).colorScheme.surface,
+          tileColor: colorScheme.surface,
           visualDensity: VisualDensity.compact,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
