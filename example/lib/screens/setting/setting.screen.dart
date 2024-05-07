@@ -49,7 +49,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
               ),
               child: const SettingItems(
-                divider: Divider(
+                separator: Divider(
                   height: 1,
                   thickness: 1,
                 ),
@@ -65,17 +65,17 @@ class _SettingScreenState extends State<SettingScreen> {
 class SettingItems extends StatelessWidget {
   const SettingItems({
     super.key,
-    this.divider = const SizedBox(height: 7),
+    this.separator = const SizedBox(height: 7),
   });
 
-  final Widget? divider;
+  final Widget? separator;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CardListView(
-          divider: divider,
+          separator: separator,
           labelStyle: Theme.of(context).textTheme.bodyLarge,
           sublabelStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),

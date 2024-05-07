@@ -25,6 +25,7 @@ class ThemeBody extends StatelessWidget {
             const Text("CommicTheme"),
             CardListView(
               labelStyle: Theme.of(context).textTheme.bodySmall,
+              separator: const SizedBox(height: 8),
               children: [
                 CardListTile(
                   label: 'My profile',

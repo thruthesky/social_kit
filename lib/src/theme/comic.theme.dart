@@ -68,17 +68,15 @@ ThemeData comicTheme({
     cardTheme: CardTheme(
       clipBehavior: Clip.hardEdge,
       elevation: 0,
-      // margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
         side: BorderSide(
           color: colorScheme.secondary,
-          width: 2,
+          width: 1.6,
         ),
       ),
     ),
-
-    /// TODO: ListTile 에 테마를 직접 적용하면, 전반적으로 좋지 않아 보인다. 옵션 함수로 만들어 쓸 수 있도록 할 것.
     listTileTheme: Theme.of(context).listTileTheme.copyWith(
           minVerticalPadding: 10,
           contentPadding: const EdgeInsets.symmetric(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardListTile {
+  final Key? key;
   final String label;
   final String? sublabel;
   final Widget? leading;
@@ -8,6 +9,7 @@ class CardListTile {
   final VoidCallback onTap;
 
   const CardListTile({
+    this.key,
     required this.label,
     this.sublabel,
     this.leading,
@@ -22,20 +24,22 @@ class CardListView extends StatelessWidget {
     this.labelStyle,
     this.sublabelStyle,
     required this.children,
-    this.divider = const SizedBox(height: 0),
+    this.separator = const SizedBox(height: 0),
   });
 
   final TextStyle? labelStyle;
   final TextStyle? sublabelStyle;
   final List<CardListTile> children;
-  final Widget? divider;
+  final Widget? separator;
 
   List<Widget> get cardListItems {
     final list = children.map(
       (item) {
         return ListTile(
+          key: item.key,
           // visualDensity: VisualDensity.compact,
           leading: item.leading,
+          minLeadingWidth: 32,
           title: Row(
             children: [
               Text(
@@ -62,7 +66,7 @@ class CardListView extends StatelessWidget {
         ..add(element)
         ..add(Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: divider ?? const SizedBox.shrink(),
+          child: separator ?? const SizedBox.shrink(),
         )),
     )..removeLast();
   }

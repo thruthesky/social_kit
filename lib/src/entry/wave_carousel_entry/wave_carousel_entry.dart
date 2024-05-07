@@ -67,9 +67,10 @@ class _WaveCarouselEntryState extends State<WaveCarouselEntry> {
             curve: Curves.ease,
           )
               .then((value) {
-            // TODO Please review since the controller can
-            // be null and this is asyncronous
-            // Please check.
+            // if ( controller.hasClients) {
+            //   // then 에서 해야 올바른 페이지 번호가 나옴
+            //   indicator.add(controller.page.toInt());
+            // }
             if (!mounted) return;
             // then 에서 해야 올바른 페이지 번호가 나옴
             indicator.add(controller.page.toInt());
