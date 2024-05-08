@@ -77,22 +77,22 @@ ThemeData comicTheme({
         ),
       ),
     ),
-    listTileTheme: Theme.of(context).listTileTheme.copyWith(
-          minVerticalPadding: 10,
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 0,
-            horizontal: 20,
-          ),
-          tileColor: colorScheme.surface,
-          visualDensity: VisualDensity.compact,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: BorderSide(
-              color: colorScheme.secondary,
-              width: 2,
-            ),
-          ),
-        ),
+    // listTileTheme: Theme.of(context).listTileTheme.copyWith(
+    //       minVerticalPadding: 10,
+    //       contentPadding: const EdgeInsets.symmetric(
+    //         vertical: 0,
+    //         horizontal: 20,
+    //       ),
+    //       tileColor: colorScheme.surface,
+    //       visualDensity: VisualDensity.compact,
+    //       shape: RoundedRectangleBorder(
+    //         borderRadius: BorderRadius.circular(20),
+    //         side: BorderSide(
+    //           color: colorScheme.secondary,
+    //           width: 2,
+    //         ),
+    //       ),
+    //     ),
     useMaterial3: true,
   );
 }
